@@ -76,11 +76,14 @@
 
 <style scoped>
   .header-bar {
+    width: 100%;
     display: flex;
     height: 49px;
     background-color: #6EB9FF;
     align-items: center;
     box-sizing: border-box;
+    position: fixed;
+    top: 0;
   }
 
   .flex-item {

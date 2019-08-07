@@ -1,13 +1,39 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from '../views/Home.vue'
 
 Vue.use(Router)
 
-const routes = [
+const Edit = () => import('../views/Edit.vue')
 
+const routes = [
+  {
+    path: '/',
+    component: Home,
+    meta: {
+      title: '首页'
+    }
+  },
+  {
+    path: '/edit',
+    component: Edit,
+    meta: {
+      title: '记录新的一天'
+    }
+  }
 ];
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes
 })
+
+
+
+router.beforeEach((to, from, next) => {
+  console.log(to);
+  document.title = to.meta.title;
+  next();
+})
+
+export default router;
