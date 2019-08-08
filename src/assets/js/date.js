@@ -35,5 +35,5 @@ export function week(year,month,day) {
  * @param {Nummber} dateVal -时间原始值
  */
 function conversion(dateVal) {
-  
+  return new Date(dateVal);
 }

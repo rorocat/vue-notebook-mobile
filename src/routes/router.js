@@ -5,6 +5,7 @@ import Home from '../views/Home.vue'
 Vue.use(Router)
 
 const Edit = () => import('../views/Edit.vue')
+const Single = () => import('../views/Single.vue')
 
 const routes = [
   {
@@ -19,6 +20,13 @@ const routes = [
     component: Edit,
     meta: {
       title: '记录新的一天'
+    }
+  },
+  {
+    path: '/item',
+    component: Single,
+    meta: {
+      title: '详情页'
     }
   }
 ];
