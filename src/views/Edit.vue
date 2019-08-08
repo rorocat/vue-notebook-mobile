@@ -65,12 +65,11 @@
           </svg>
         </div>
       </div>
-
       <!-- 保存 -->
       <div class="save">
         <select class="category" v-model="category">
-          <option value="life">生活</option>
-          <option value="learn">学习</option>
+          <option value="生活">生活</option>
+          <option value="学习">学习</option>
         </select>
         <span class="save-btn" @click="save">保存</span>
       </div>
@@ -83,7 +82,9 @@
     month,
     day,
     hours,
-    minutes
+    minutes,
+    year,
+    week
   } from '../assets/js/date.js'
   import {setStorage} from '../assets/js/storage.js'
 
@@ -96,23 +97,30 @@
         hours,
         minutes,
         content: '',
-        category: 'life',
+        category: '生活',
+        year
       }
     },
     computed: {
       //返回拼接的时间
       getTimeTitle() {
-        return `${this.month}月${this.day}日 <small>/${this.hours}:${this.minutes}</small>`
+        return `${this.month}月${this.day}日 <small>/${this.hours}:${this.minutes} ${this.getWeek}</small>`
       },
       //输出输入长度
       getLength() {
         return this.content.length;
+      },
+      getWeek(){
+        return week(this.year,this.month,this.day)
       }
     },
     methods: {
       //返回上一页
       back() {
-        this.$router.go(-1)
+        // this.$router.go(-1)
+        this.$router.push({
+          path: '/'
+        })
       },
       //保存
       save() {
@@ -126,8 +134,12 @@
         const item = {
           category,
           content,
-          date,
-          id: date
+          id: date,
+          time: `${this.hours}:${this.minutes}`,
+          month: this.month,
+          day: this.day,
+          week: week(this.year,this.month,this.day),
+          year: `${year}`,
         }
         //保存数据
         setStorage(item);
@@ -263,6 +275,11 @@
     border-bottom-left-radius: 5px;
     text-indent: 40%;
     color: white;
+  }
+
+  .category option {
+    background-color: #fff;
+    color: #37474f;
   }
 
   .save-btn {
