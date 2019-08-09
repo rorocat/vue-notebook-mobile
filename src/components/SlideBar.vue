@@ -44,7 +44,7 @@
   .slider-bar {
     height: 100vh;
     background-color: #f5f4f4;
-    position: absolute;
+    position: fixed;
     top: 0;
     left:-100%;
     max-width: 360px;

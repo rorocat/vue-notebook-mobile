@@ -105,15 +105,18 @@
 <style scoped>
   .calendar {
     width: 100%;
-    background-color: #6EB9FF;
+    background-color: #C9E9CF;
     color: white;
     transition: all 0.5s;
     overflow: hidden;
-    margin-top: 49px;
+    position: relative;
+    top: 49px;
+    z-index: 1;
   }
 
   .calendar-head {
     padding: 0 1em .6em 1em;
+    text-align: center
   }
 
   .calendar-body {

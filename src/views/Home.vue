@@ -27,12 +27,12 @@
       ContentList
     },
     methods: {
-      openEdit(){
+      openEdit() {
         this.$router.push({
           path: '/edit'
         });
       },
-      openSlideBar(){
+      openSlideBar() {
         this.$store.commit({
           type: 'switchStatus',
           key: 'slideStatus',
@@ -45,22 +45,25 @@
 
 <style scoped>
   .home {
-    /* height: 100vh; */
-    overflow: hidden;
+    height: 100vh;
+    top: 0;
   }
-  .home-body{
+
+  .home-body {
     height: 100%;
   }
+
   .edit-btn {
     width: 3em;
     height: 3em;
-    background-color: #6eb9ff;
+    background-color: #C9E9CF;
     border-radius: 50%;
     text-align: center;
     line-height: 3.5em;
     position: fixed;
     bottom: 1em;
     right: 1em;
+    transition: 1s;
     z-index: 1;
   }
 

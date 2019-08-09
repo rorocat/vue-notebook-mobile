@@ -16,7 +16,7 @@
             {{ getLength }} 字</small>
         </span>
       </div>
-      <div class="head-item">
+      <div class="head-item" @click="help">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-bangzhu"></use>
         </svg>
@@ -173,6 +173,13 @@
             break;
         }
       },
+      help() {
+        this.$store.commit({
+          type: 'switchStatus',
+          key: 'helpStatus',
+          value: true
+        })
+      }
     },
   }
 </script>
@@ -269,7 +276,7 @@
   .category {
     width: 30%;
     height: 100%;
-    background-color: #8FC7FC;
+    background-color: #C9E9CF;
     border-width: 0;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;

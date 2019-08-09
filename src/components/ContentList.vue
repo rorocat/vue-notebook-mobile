@@ -1,13 +1,12 @@
 <template>
   <div class="content-list">
-    <button @click="init()">初始化</button>
     <p class="count" v-html="recordCount" v-if="list.length!=0"></p>
     <ul>
       <li v-if="list.length==0">
         <p class="null">你还没开始记录呢！</p>
         <p class="null">点击底部按钮记录美好的一天吧！</p>
       </li>
-      <li class="item" v-for="(item, index) in list" :key="index" @click="jumpView(item.id)">
+      <li class="item" v-for="(item, index) in filterList" :key="index" @click="jumpView(item.id)">
         <div class="content-date">
           <p class="date-day">{{ item.day }}</p>
           <p class="date-month">{{ item.month }}月/<small v-text="item.week"></small></p>
@@ -46,7 +45,18 @@
         }
       },
       recordCount() {
-        return `已记录&nbsp;${this.duration}&nbsp;天（共&nbsp;${this.list.length}&nbsp;篇）`
+        return `已记录&nbsp;${this.duration}&nbsp;天（共&nbsp;${this.filterList.length}&nbsp;篇）`
+      },
+      getFilter(){
+        return this.$store.state.filterList;        
+      },
+      filterList(){
+        return this.list.filter(item => {
+          if(this.getFilter == '全部') {
+            return item;
+          }
+          return item.category == this.getFilter;
+        });
       }
     },
     methods: {
@@ -81,13 +91,9 @@
 <style scoped>
   .content-list {
     width: 100%;
-    position: absolute;
+    position: relative;
     top: 49px;
-    bottom: 0;
-    height: 100%;
-    overflow: scroll;
     box-sizing: border-box;
-    z-index: -1;
   }
 
   .content-list {
