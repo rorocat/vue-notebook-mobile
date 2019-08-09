@@ -3,7 +3,6 @@ import App from './App.vue'
 import store from './store/index'
 import router from './routes/router'
 import VueTouch from 'vue-touch'
-import directives from './directive/directives'
 
 Vue.config.productionTip = false
 

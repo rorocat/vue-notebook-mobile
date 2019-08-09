@@ -62,8 +62,6 @@
     },
     created() {
       this.getSingleDate();
-      console.log(marked);
-      
     },
     computed: {
       formatDate() {

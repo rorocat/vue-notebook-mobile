@@ -98,7 +98,7 @@
   .help-head{
     display: flex;
     height: 45px;
-    background-color: #6EB9FF;
+    background-color: #C9E9CF;
     align-items: center;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
