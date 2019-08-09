@@ -6,7 +6,9 @@ Vue.use(Vuex);
 
 const state = {
   calendarStatus: false,
-  slideStatus: false
+  slideStatus: false,
+  filterList: '全部',
+  helpStatus: false
 };
 
 //2、创建store对象
