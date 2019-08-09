@@ -6,6 +6,7 @@ Vue.use(Router)
 
 const Edit = () => import('../views/Edit.vue')
 const Single = () => import('../views/Single.vue')
+const NavPage = () => import('../views/NavPage.vue')
 
 const routes = [
   {
@@ -13,7 +14,7 @@ const routes = [
     component: Home,
     meta: {
       title: '首页'
-    }
+    },
   },
   {
     path: '/edit',
@@ -28,20 +29,47 @@ const routes = [
     meta: {
       title: '详情页'
     }
+  },
+  {
+    path: '/navpage',
+    component: NavPage,
+    meta: {
+      title: "引导页"
+    },
+    beforeEnter: (to, from, next) => {
+      const nav = localStorage.getItem('record');
+      if(nav != null){
+        next({
+          path: '/'
+        })
+        return;
+      }
+      next();
+    }
   }
 ];
 
 const router = new Router({
-  mode: 'history',
+  // mode: 'history',
   routes
 })
 
 
 
 router.beforeEach((to, from, next) => {
-  console.log(to);
+  const nav = localStorage.getItem('record');
   document.title = to.meta.title;
-  next();
+  if(to.fullPath == '/navpage'){
+    next();
+  }else{
+    if(nav==null){
+      next({
+        path: '/navpage'
+      });
+      return;
+    }
+    next();
+  }
 })
 
 export default router;
