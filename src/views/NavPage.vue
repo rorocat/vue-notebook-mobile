@@ -19,9 +19,8 @@
       </div>
     </div>
     <div class="page-count">
-      <div :class="{ p: page===1 }"></div>
-      <div :class="{ p: page===2 }"></div>
-      <div :class="{ p: page===3 }"></div>
+      <div v-for="(item, index) in 3" :key="index" 
+            :class="{ p: page===item }" @click="jumpPage(item)"></div>
     </div>
     <button class="start-btn" v-show="three" @click="startRecord">开始记录</button>
     <div class="windmill">
@@ -72,6 +71,9 @@
         this.$router.push({
           path: '/'
         })
+      },
+      jumpPage(i) {
+        this.page = i;
       }
     },
   }
