@@ -72,7 +72,7 @@
       },
       //获取月天数
       getMonthNum() {
-        return numberDay(this.month, this.day);
+        return numberDay(this.year, this.month);
       }
     },
     methods: {
